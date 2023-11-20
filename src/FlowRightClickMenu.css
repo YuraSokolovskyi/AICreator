@@ -1,0 +1,51 @@
+.FlowRightClickMenu{
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.MenuList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 10px;
+}
+
+.MenuListItem{
+    box-sizing: border-box;
+    padding: 5px 10px 5px 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.MenuListItem:not(:last-child){
+    border-bottom: 1px solid black;
+}
+
+.MenuListItem:nth-child(1){
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.MenuListItem:nth-last-child(1){
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.MenuListItem:hover{
+    background-color: #e5e5e5;
+}
+
+.MenuListItemImg{
+    height: 45px;
+    width: 45px;
+    object-fit: contain;
+    margin: 0 15px 0 0;
+}
+
+.MenuListItemName{
+    margin: 0;
+}

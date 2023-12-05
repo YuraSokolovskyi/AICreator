@@ -1,0 +1,31 @@
+.LayerContainer{
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.LayerTitleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 20px 0;
+}
+
+.LayerTitleImg{
+    height: 45px;
+    width: 45px;
+    object-fit: contain;
+    margin: 0 15px 0 0;
+}
+
+.LayerTitleText{
+    margin: 0;
+}
+
+.LayerSettingsContainer{
+    display: flex;
+}
+
+.LayerSettingsName{
+    margin: 0 10px 0 0;
+}

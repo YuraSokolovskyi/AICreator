@@ -10,16 +10,21 @@ import ReactFlow, {
 
 import 'reactflow/dist/style.css';
 import FlowRightClickMenu from "./FlowRightClickMenu.jsx";
+import DenseLayer from "./layers/Dense.jsx";
+import Conv2DLayer from "./layers/Conv2D.jsx";
+import MaxPoolingLayer from "./layers/MaxPooling.jsx";
 
-const initialNodes = [
-    { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-    { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+let layerIndex = 0
+
+const nodeTypes = {
+    Dense: DenseLayer,
+    Conv2D: Conv2DLayer,
+    MaxPooling: MaxPoolingLayer,
+}
 
 function App() {
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-    const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    const [nodes, setNodes, onNodesChange] = useNodesState([]);
+    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
     // context menu
     const [menuOpened, setMenuOpened] = useState(false)
@@ -36,18 +41,40 @@ function App() {
     }
 
     const addLayer = (id) => {
+        let type = "Dense"
 
+        switch (id) {
+            case 1:
+                type = "Dense"
+                break
+            case 2:
+                type = "Conv2D"
+                break
+            case 3:
+                type = "MaxPooling"
+                break
+        }
+
+        setNodes((eds) => eds.concat({
+            id: `${layerIndex}`,
+            position: {x: 200, y: 200},
+            type: type,
+            data: { id: id }
+        }))
+        layerIndex += 1
+        console.log(nodes)
     }
 
     return (
-        <div style={{ width: '100vw', height: '100vh', position: "relative" }}>
-        {/*<div style={{ width: '600px', height: '600px' }}>*/}
+        <div style={{width: '100vw', height: '100vh', position: "relative"}}>
+            {/*<div style={{ width: '600px', height: '600px' }}>*/}
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
+                nodeTypes={nodeTypes}
                 onContextMenu={(e) => {
                     e.preventDefault()
                     setMenuOpened(true)
@@ -60,7 +87,7 @@ function App() {
                     setMenuOpened(false)
                 }}
             >
-                <Background variant="dots" gap={12} size={1} />
+                <Background variant="dots" gap={12} size={1}/>
             </ReactFlow>
 
             <FlowRightClickMenu

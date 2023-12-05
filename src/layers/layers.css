@@ -1,0 +1,50 @@
+.denseNode {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+    background: white;
+}
+
+.layerTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 15px 0;
+}
+
+.layerTitleImg{
+    height: 45px;
+    object-fit: contain;
+    margin: 0 10px 0 0;
+}
+
+.layerTitleName{
+    margin: 0;
+    font-size: 16px;
+    color: black;
+}
+
+.layerSettings{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.layerSettingsItem{
+    display: flex;
+    align-items: center;
+}
+
+.layerSettingsItem:not(:last-child){
+    margin: 0 0 10px 0;
+}
+
+.layerSettingsItemTitle{
+    color: black;
+    margin: 0 15px 0 0;
+    flex: 1;
+}
+
+.layerSettingsItemNumberInput{
+
+}

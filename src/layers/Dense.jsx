@@ -13,8 +13,10 @@ function DenseLayer({data, isConnectable}) {
                     <p className="LayerTitleText">Dense</p>
                 </div>
                 <div className="LayerSettingsContainer">
-                    <p className="LayerSettingsName">Nodes</p>
-                    <input type="number" className="LayerNumberParam nodrag"/>
+                    <div className="LayerProp">
+                        <p className="LayerSettingsName">Nodes</p>
+                        <input type="number" className="LayerNumberParam nodrag"/>
+                    </div>
                 </div>
             </div>
             <Handle type={"source"} position={Position.Right} isConnectable={isConnectable}/>

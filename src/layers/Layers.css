@@ -22,10 +22,24 @@
     margin: 0;
 }
 
+.LayerSettingsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .LayerProp{
     display: flex;
 }
 
 .LayerSettingsName{
     margin: 0 10px 0 0;
+}
+
+.LayerNumberParam{
+    flex: 1;
+}
+
+.LayerComboParam{
+    flex: 1;
 }

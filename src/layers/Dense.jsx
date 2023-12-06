@@ -1,7 +1,7 @@
 import React, {useCallback} from "react";
 import {Handle, Position} from "reactflow";
 import "./Layers.css"
-import {layers} from "./../LayersData.js";
+import {layers, activations} from "./../LayersData.js";
 
 function DenseLayer({data, isConnectable}) {
     return (
@@ -15,7 +15,14 @@ function DenseLayer({data, isConnectable}) {
                 <div className="LayerSettingsContainer">
                     <div className="LayerProp">
                         <p className="LayerSettingsName">Nodes</p>
-                        <input type="number" className="LayerNumberParam nodrag"/>
+                        <input type="number" className="LayerNumberParam nodrag" defaultValue={0} min={0}/>
+                    </div>
+
+                    <div className="LayerProp">
+                        <p className="LayerSettingsName">Activation</p>
+                        <select name="activations" id="denseActivations" className={"LayerComboParam nodrag"}>
+                            {activations.map(activation => <option key={activation.id} name={activation.name}>{activation.name}</option>)}
+                        </select>
                     </div>
                 </div>
             </div>

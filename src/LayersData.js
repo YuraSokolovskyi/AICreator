@@ -15,3 +15,14 @@ export const layers = [
         img: "./src/assets/layers/maxPooling2DImg.png"
     },
 ]
+
+export const activations = [
+    {
+        id: 1,
+        name: "relu"
+    },
+    {
+        id: 2,
+        name: "softmax"
+    }
+]

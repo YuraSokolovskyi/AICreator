@@ -17,7 +17,7 @@ const FlowRightClickMenu = ({isOpen, top, left, onMenuItemSelected}) => {
                             key={item.id}
                             className="MenuListItem"
                             onClick={() => {
-                                onMenuItemSelected(item.id)
+                                onMenuItemSelected(item.id, left, top)
                             }}
                         >
                             <img src={item.img} alt="" className={"MenuListItemImg"}/>

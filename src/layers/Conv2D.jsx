@@ -2,11 +2,23 @@ import React, {useCallback} from "react";
 import {Handle, Position} from "reactflow";
 import "./Layers.css"
 import {activations, layers} from "../LayersData.js";
+import {LayerHandle} from "./LayerHandle.jsx";
+import NumberInput from "./utils/NumberInput.jsx";
+import SelectInput from "./utils/SelectInput.jsx";
 
 function Conv2DLayer({data, isConnectable}) {
+    const defaultData = {
+        units: 0,
+        activation: "relu"
+    }
+
+    for (let i in defaultData){
+        if (!data[i]) data[i] = defaultData[i]
+    }
+
     return (
         <div className={"LayerContainer"}>
-            <Handle type={"target"} position={Position.Left} isConnectable={isConnectable}/>
+            <LayerHandle type={"target"} position={Position.Left}/>
             <div>
                 <div className="LayerTitleContainer">
                     <img src={layers.find(i => i.id === data.id).img} alt="" className={"LayerTitleImg"}/>
@@ -14,19 +26,26 @@ function Conv2DLayer({data, isConnectable}) {
                 </div>
                 <div className="LayerSettingsContainer">
                     <div className="LayerProp">
-                        <p className="LayerSettingsName">Nodes</p>
-                        <input type="number" className="LayerNumberParam nodrag" defaultValue={0} min={0}/>
+                        <p className="LayerSettingsName">Units</p>
+                        <NumberInput
+                            min={0}
+                            defaultValue={defaultData.units}
+                            onChange={(value) => data.nodes = value}
+                            isInteger={true}
+                        />
                     </div>
 
                     <div className="LayerProp">
                         <p className="LayerSettingsName">Activation</p>
-                        <select name="activations" id="denseActivations" className={"LayerComboParam nodrag"}>
-                            {activations.map(activation => <option key={activation.id} name={activation.name}>{activation.name}</option>)}
-                        </select>
+                        <SelectInput
+                            values={activations.map(activation => <option key={activation.id} name={activation.name}>{activation.name}</option>)}
+                            defaultValue={defaultData.activation}
+                            onChange={(value) => data.activation = value}
+                        />
                     </div>
                 </div>
             </div>
-            <Handle type={"source"} position={Position.Right} isConnectable={isConnectable}/>
+            <LayerHandle type={"source"} position={Position.Right}/>
         </div>
     )
 }

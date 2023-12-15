@@ -14,6 +14,16 @@ export const layers = [
         name: "MaxPooling",
         img: "./src/assets/layers/maxPooling2DImg.png"
     },
+    {
+        id: 4,
+        name: "Input",
+        img: "./src/assets/layers/flattenImg.png"
+    },
+    {
+        id: 5,
+        name: "Flatten",
+        img: "./src/assets/layers/flattenImg.png"
+    },
 ]
 
 export const activations = [

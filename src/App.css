@@ -1,0 +1,28 @@
+body{
+    place-items: flex-start;
+}
+
+#root{
+    height: 100%;
+}
+
+.Container{
+    width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.FlowHeader{
+    height: 150px;
+    width: 100%;
+    padding: 0 50px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+}
+
+.GeneratePythonTensorFlow{
+    height: 70px;
+}
